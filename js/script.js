@@ -3,7 +3,13 @@
 document.getElementById("name").focus();
 const form = document.querySelector("form");
 const submitButton = document.querySelector("button");
-
+const designMenu = document.querySelector("#design");
+const colorOption = document.querySelectorAll("#color option");
+const shirtColors = document.querySelector('#shirt-colors');
+console.log(shirtColors);
+shirtColors.style.display = "none";
+const colorPlaceholder = document.createElement("option");
+colorPlaceholder.style.display = "none";
 /***job role section **/
 const otherInput = document.getElementById("other-job-role");
 otherInput.style.display = "none";
@@ -19,23 +25,15 @@ for (let i = 0; i < colors.length; i++) {
   //hide the colors in the "color" drop down
   colors[i].style.display = "none";
 }
-const designMenu = document.querySelector("#design");
-const colorOption = document.querySelectorAll("#color option");
-//at initial load update the "color" field to read "Please select a Theme"
-const colorPlaceholder = document.createElement("option");
-colorPlaceholder.style.display = "none";
-colors.appendChild(colorPlaceholder).text = "Please Select a T-Shirt Theme";
-colors.value = "Please Select a T-Shirt Theme";
+
+
 //event listener for displaying colors depending on selected theme
 designMenu.addEventListener("change", (e) => {
   colors.appendChild(colorPlaceholder).text = "Choose a Color";
-  colors.value = "Choose a Color";
-  if (designMenu.value === "Select Theme") {
-    colors.appendChild(colorPlaceholder).text = "Please Select a T-Shirt Theme";
-    colors.value = "Please Select a T-Shirt Theme";
-  }
+ 
   for (let i = 0; i < colors.length; i++) {
     colors[i].style.display = "none";
+    shirtColors.style.display = "block";
     if (e.target.value === "js puns") {
       colorOption[0].style.display = "block";
       colorOption[1].style.display = "block";
@@ -119,15 +117,14 @@ payment.addEventListener("change", (e) => {
 });
 /** form Validation section */
 function createError(formField) {
-  if(!formField.previousElementSibling.classList.contains('.error-border')) {
-    document.querySelector('.hint');
+  if(!formField.previousElementSibling.classList.contains('error-border')) {
+    const errorMessage = documents.querySelector('.hint');
     formField.setAttribute('required', true);
-
   }
 }
-function removeError(formField) {
-  if(formField.previousElementSibling.classList.contains('.error-border')) {
-    formField.previousElementSibling.remove('.hint');
+function removeError(error) {
+  if(formField.previousElementSibling.classList.contains('error-border')) {
+    formField.previousElementSibling.remove('');
     formField.setAttribute('required', false);
 
   }
@@ -136,12 +133,12 @@ function isNameValid() {
   const nameInput = document.getElementById("name");
   if(nameInput.value === '') {
     removeError(nameInput);
-    createError(nameInput, '* Please Enter Your Name');
+    createError(nameInput);
     return false;
   } 
   if(nameInput.value.search(/\d/) != -1) {
     removeError(nameInput);
-    createError(nameInput, '* Name cannot contain numbers');
+    createError(nameInput);
     return false;
   } else {
     removeError(nameInput);
