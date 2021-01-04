@@ -6,7 +6,6 @@ const submitButton = document.querySelector("button");
 const designMenu = document.querySelector("#design");
 const colorOption = document.querySelectorAll("#color option");
 const shirtColors = document.querySelector('#shirt-colors');
-console.log(shirtColors);
 shirtColors.style.display = "none";
 const colorPlaceholder = document.createElement("option");
 colorPlaceholder.style.display = "none";
@@ -219,16 +218,17 @@ function isEmailValid() {
 // document.getElementById("cc-num").addEventListener("keyup", isCcValid);
 // document.getElementById('zip').addEventListener('keyup', isCcValid);
 // document.getElementById('cvv').addEventListener('keyup', isCcValid)
-// submitButton.addEventListener("click", (e) => {
-//   if (isNameValid() && isEmailValid() && isCcValid() && checkActivities()) {
-//     alert('registration is Complete');
-//   } else {
-//     e.preventDefault();
+document.querySelector('#form-hint').addEventListener("click", (e) => {
+  // if (isNameValid() && isEmailValid() && isCcValid() && checkActivities()) {
+  //   alert('registration is Complete');
+  // } else {
+  //   e.preventDefault();
 
-//     isNameValid();
-//     isEmailValid();
-//     isCcValid();
-//     checkActivities();
+  //   isNameValid();
+  //   isEmailValid();
+  //   isCcValid();
+  //   checkActivities();
 
-//   }
-// });
+  // }
+  alert('submit button works')
+});
