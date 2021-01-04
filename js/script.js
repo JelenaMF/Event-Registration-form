@@ -116,6 +116,9 @@ payment.addEventListener("change", (e) => {
 });
 
 /** form Validation section */
+function validationPass(el) {
+  el.parentElement.className = 'error-border';
+}
 // function createError(formField) {
 //   if(!formField.previousElementSibling.classList.contains('error-border')) {
 //     const errorMessage = documents.getElementByClass('hint');
@@ -132,7 +135,7 @@ payment.addEventListener("change", (e) => {
 //}
 function isNameValid() {
   const nameInput = document.getElementById("name");
-  
+
   if(nameInput.value === '') {
     document.getElementById('name-hint');
     document.querySelector('.error-border').style.display.color = 'red';
@@ -165,20 +168,19 @@ function isEmailValid() {
       return true;
     }
    }
-// const pickActivity = document.createElement("div");
-// const checkbox1 = document.querySelectorAll(".activities label")[0];
-// activities.insertBefore(pickActivity, checkbox1);
-// function checkActivities() {
-//   for (let i = 0; i < checkboxes.length; i++) {
-//     if (!checkboxes[i].checked) {
-//       checkboxes[i].setAttribute("required", true);
-//       createError(activities, '*Please select');
-//       return false;
-//     } else {
-//       return true;
-//     }
-//   }
-// }
+
+const checkbox1 = document.querySelectorAll(".activities label")[0];
+function checkActivities() {
+  for (let i = 0; i < checkboxes.length; i++) {
+    if (!checkboxes[i].checked) {
+      checkboxes[i].setAttribute("required", true);
+      createError(activities, '*Please select');
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
 
 // function isCcValid() {
 //   const ccNum = document.getElementById("cc-num");
