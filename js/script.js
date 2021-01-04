@@ -114,33 +114,36 @@ payment.addEventListener("change", (e) => {
   }
   
 });
-/** form Validation section */
-function createError(formField) {
-  if(!formField.previousElementSibling.classList.contains('error-border')) {
-    const errorMessage = documents.querySelector('.hint');
-    formField.setAttribute('required', true);
-  }
-}
-function removeError(error) {
-  if(formField.previousElementSibling.classList.contains('error-border')) {
-    formField.previousElementSibling.remove('');
-    formField.setAttribute('required', false);
 
-  }
-}
+/** form Validation section */
+// function createError(formField) {
+//   if(!formField.previousElementSibling.classList.contains('error-border')) {
+//     const errorMessage = documents.getElementByClass('hint');
+
+//   }
+  
+// }
+// function removeError(error) {
+//   if(formField.previousElementSibling.classList.contains('error-border')) {
+//     formField.previousElementSibling.remove('');
+//     formField.setAttribute('required', false);
+
+//   }
+//}
 function isNameValid() {
   const nameInput = document.getElementById("name");
+  
   if(nameInput.value === '') {
-    removeError(nameInput);
-    createError(nameInput);
+    document.getElementById('name-hint');
+    document.querySelector('.error-border').style.display.color = 'red';
     return false;
   } 
   if(nameInput.value.search(/\d/) != -1) {
-    removeError(nameInput);
-    createError(nameInput);
+    document.querySelector('.error-border');
+    document.getElementById('name-hint').textContent = 'Names should be letters only';
     return false;
   } else {
-    removeError(nameInput);
+    
     return true;  
   }
 }
@@ -218,7 +221,11 @@ function isEmailValid() {
 // document.getElementById("cc-num").addEventListener("keyup", isCcValid);
 // document.getElementById('zip').addEventListener('keyup', isCcValid);
 // document.getElementById('cvv').addEventListener('keyup', isCcValid)
-document.querySelector('#form-hint').addEventListener("click", (e) => {
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const validate = form.setAttribute('validate', true);
+  isNameValid() 
+ 
   // if (isNameValid() && isEmailValid() && isCcValid() && checkActivities()) {
   //   alert('registration is Complete');
   // } else {
