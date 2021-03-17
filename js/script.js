@@ -1,5 +1,6 @@
 /*
  */
+//"strict"
 document.getElementById("name").focus();
 const form = document.querySelector("form");
 const submitButton = document.querySelector("button");
