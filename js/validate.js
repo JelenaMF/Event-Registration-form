@@ -100,7 +100,7 @@ function isMonthSelected() {
     const expYear = document.querySelectorAll('#exp-year');
    
     expMon.addEventListener('change', (e) => {
-        if(e.target.value != 'Select Date') {
+        if(e.target.value === ) {
             expMon.classList.remove('error-border');
         } else {
             expMon.classList.add('remove-error');
